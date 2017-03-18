@@ -28,7 +28,10 @@
   (set-stop-byte port))
 
 (defn -main [& args]
-  (Thread/sleep 2000) ;; 1000 was too small, 2000 works. don't know why
+  ;; when the arduino serial port is first opened, it reboots the arduino,
+  ;; so we need to wait a couple of seconds for it to boot up before we start sending data.
+  (Thread/sleep 2000)
+
   (dotimes [i 24]
     (set-pixel-color serial-port i pink)
     (Thread/sleep 100)))
