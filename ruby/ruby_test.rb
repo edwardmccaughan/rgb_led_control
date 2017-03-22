@@ -24,6 +24,9 @@ def set_pixel(pixel, red, green, blue)
   Arduino.serial_port.write(255.chr)  
 end
 
+
+set_pixel(0,0,0,0)
+
 while(true)
   (0..Arduino::PIXELS).each do |pixel|
     set_pixel(pixel, 0,0,50)
